@@ -1,5 +1,8 @@
-@main def hello: Unit =
-  println("Hello world!")
-  println(msg)
+import zio.*
 
-def msg = "I was compiled by Scala 3. :)"
+object Main extends ZIOAppDefault:
+  val msg = "I was compiled by Scala 3. :)"
+  
+  def run = Console.printLine("Hello world!")
+    *> Console.printLine(msg)
+    

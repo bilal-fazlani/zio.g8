@@ -26,3 +26,7 @@ classes/
 .idea
 .idea_modules
 /.worksheet/
+.metals
+.bloop
+metals.sbt
+.vscode
