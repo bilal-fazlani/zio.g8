@@ -5,7 +5,7 @@ lazy val scalaVersions = Seq("2.12.18")
 lazy val root = project
   .in(file("."))
   .settings(
-    name := "scala3-template",
+    name := "zio2-scala3-template",
     Test / test := {
       val _ = (Test / g8Test).toTask("").value
     },
@@ -19,7 +19,7 @@ ThisBuild / githubWorkflowScalaVersions := scalaVersions
 ThisBuild / githubWorkflowBuildPostamble := Seq(
   // This runs the template with the default parameters, and runs test within the templated app.
   WorkflowStep.Run(List("sbt -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M test")),
-  WorkflowStep.Run(List("pushd target/sbt-test/scala3-template/scripted && sbt run test && popd")),
+  WorkflowStep.Run(List("pushd target/sbt-test/zio2-scala3-template/scripted && sbt run test && popd")),
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Nil
 Global / onChangedBuildSource := ReloadOnSourceChanges

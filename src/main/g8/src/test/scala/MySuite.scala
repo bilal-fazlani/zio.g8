@@ -1,9 +1,13 @@
-// For more information on writing tests, see
-// https://scalameta.org/munit/docs/getting-started.html
-class MySuite extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
+import zio.*
+import zio.test.*
+import zio.test.Assertion.*
+
+object MySuite extends ZIOSpecDefault {
+  val spec = suite("MySuite")(
+    test("example test that succeeds"){
+      val obtained = 42
+      val expected = 42
+      assertTrue(obtained == expected)
+    } @@ TestAspect.timeout(10.seconds) 
+  ) @@ TestAspect.sequential
 }
